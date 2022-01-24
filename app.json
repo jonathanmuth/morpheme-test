@@ -1,0 +1,46 @@
+{
+  "stack": "container",
+  "env": {
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "AWS_REGION": {
+      "required": true,
+      "description": "For the list of available regions see: https://docs.aws.amazon.com/general/latest/gr/rande.html",
+      "value": "eu-central-1"
+    },
+    "AWS_BUCKET": {
+      "required": true
+    },
+    "BEARER_TOKEN": {
+      "required": true,
+      "description": "A secret token for authenticating protected endpoints",
+      "generator": "secret"
+    },
+    "GOOGLE_SERVICE_ACCOUNT_CLIENT_EMAIL": {
+      "description": "Extract the value for `client_email` from your Google Service Account JSON credentials file.",
+      "required": true
+    },
+    "GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY": {
+      "description": "Extract the value for `private_key` from your Google Service Account JSON credentials file.",
+      "required": true
+    },
+    "LOG_LEVEL": {
+      "required": true,
+      "description": "For the list of available options see: https://github.com/pinojs/pino/blob/master/docs/api.md#loggerlevel-string-gettersetter",
+      "value": "info"
+    }
+  },
+  "addons": ["heroku-redis"],
+  "formation": {
+    "web": {
+      "quantity": 1
+    },
+    "worker": {
+      "quantity": 1
+    }
+  }
+}
